@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Retro RPS Battle</title>
+  <title>Retro Pokémon RPS Battle</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,10 +16,10 @@
 
     <div class="battle-field">
       <div class="hand computer-hand" id="computer-hand">
-        <img src="https://i.ibb.co/ZXv7xVx/rock-computer.png" alt="Computer Hand">
+        <img src="https://i.ibb.co/3S0mZ4d/rock.png" alt="Computer Hand">
       </div>
       <div class="hand player-hand" id="player-hand">
-        <img src="https://i.ibb.co/ZXv7xVx/rock-computer.png" alt="Player Hand">
+        <img src="https://i.ibb.co/3S0mZ4d/rock.png" alt="Player Hand">
       </div>
     </div>
 
@@ -33,6 +33,12 @@
 
     <button id="reset-btn" class="reset-btn">Reset Scores</button>
   </div>
+
+  <!-- Sound effects -->
+  <audio id="shake-sound" src="https://www.soundjay.com/button/sounds/button-16.mp3"></audio>
+  <audio id="win-sound" src="https://www.soundjay.com/button/sounds/button-3.mp3"></audio>
+  <audio id="lose-sound" src="https://www.soundjay.com/button/sounds/button-10.mp3"></audio>
+  <audio id="tie-sound" src="https://www.soundjay.com/button/sounds/button-09.mp3"></audio>
 
   <script src="script.js"></script>
 </body>
