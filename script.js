@@ -12,21 +12,19 @@ const computerHandEl = document.getElementById('computer-hand').querySelector('i
 const resetBtn = document.getElementById('reset-btn');
 
 const handImages = {
-  rock: "https://i.ibb.co/ZXv7xVx/rock-computer.png",
-  paper: "https://i.ibb.co/5BGr6hV/paper.png",
+  rock: "https://i.ibb.co/3S0mZ4d/rock.png",
+  paper: "https://i.ibb.co/0BCvVfS/paper.png",
   scissors: "https://i.ibb.co/4TxB9xq/scissors.png"
 };
 
+// Sounds
+const shakeSound = document.getElementById('shake-sound');
+const winSound = document.getElementById('win-sound');
+const loseSound = document.getElementById('lose-sound');
+const tieSound = document.getElementById('tie-sound');
+
 function pickRandom() {
   return choices[Math.floor(Math.random()*choices.length)];
-}
-
-function geniusAI(history) {
-  if(!history || history.length===0) return pickRandom();
-  const last = history[history.length-1];
-  if(last==='rock') return Math.random()<0.7?'paper':pickRandom();
-  if(last==='paper') return Math.random()<0.7?'scissors':pickRandom();
-  if(last==='scissors') return Math.random()<0.7?'rock':pickRandom();
 }
 
 function decideWinner(player, computer){
@@ -46,19 +44,17 @@ function updateScores(winner){
   tieScoreEl.textContent = tieScore;
 }
 
-let history = [];
-
 function playRound(playerChoice){
-  history.push(playerChoice);
-  const computerChoice = geniusAI(history);
+  const computerChoice = pickRandom();
 
-  // Reset to rock for shake
+  // Reset hands to rock for shake
   playerHandEl.src = handImages.rock;
   computerHandEl.src = handImages.rock;
 
   // Shake animation
   playerHandEl.classList.add('shake');
   computerHandEl.classList.add('shake');
+  shakeSound.currentTime=0; shakeSound.play();
 
   setTimeout(()=>{
     playerHandEl.classList.remove('shake');
@@ -71,9 +67,16 @@ function playRound(playerChoice){
     const winner = decideWinner(playerChoice, computerChoice);
     updateScores(winner);
 
-    if(winner==='player') roundTextEl.textContent = '🎉 You win!';
-    else if(winner==='computer') roundTextEl.textContent = '🤖 Computer wins!';
-    else roundTextEl.textContent = "😐 It's a tie!";
+    if(winner==='player'){
+      roundTextEl.textContent = '🎉 You win!';
+      winSound.play();
+    } else if(winner==='computer'){
+      roundTextEl.textContent = '🤖 Computer wins!';
+      loseSound.play();
+    } else {
+      roundTextEl.textContent = "😐 It's a tie!";
+      tieSound.play();
+    }
   }, 900);
 }
 
@@ -87,5 +90,4 @@ resetBtn.addEventListener('click',()=>{
   roundTextEl.textContent = 'Choose your move!';
   playerHandEl.src = handImages.rock;
   computerHandEl.src = handImages.rock;
-  history=[];
 });
