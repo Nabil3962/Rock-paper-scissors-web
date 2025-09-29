@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="container">
-    <h1 class="title">🎈 Rock • Paper • Scissors 🎈</h1>
+    <h1 class="title">✊✋✌ Rock Paper Scissors</h1>
+
+    <!-- Arena: Top = Computer, Bottom = Player -->
+    <section class="arena">
+      <div class="hand computer-hand" id="computer-hand">✊</div>
+      <div class="hand player-hand" id="player-hand">✊</div>
+    </section>
+
+    <section class="result">
+      <div id="round-text">Make your move!</div>
+    </section>
+
+    <section class="choices">
+      <button class="choice" data-choice="rock">✊ Rock</button>
+      <button class="choice" data-choice="paper">✋ Paper</button>
+      <button class="choice" data-choice="scissors">✌ Scissors</button>
+    </section>
 
     <section class="scoreboard">
       <div class="score">You: <span id="player-score">0</span></div>
@@ -16,24 +32,9 @@
       <div class="score">Computer: <span id="computer-score">0</span></div>
     </section>
 
-    <section class="choices">
-      <button class="choice" data-choice="rock">🪨 Rock</button>
-      <button class="choice" data-choice="paper">📄 Paper</button>
-      <button class="choice" data-choice="scissors">✂️ Scissors</button>
-    </section>
-
-    <section class="result">
-      <div id="round-text">Make your move!</div>
-      <div class="plays">
-        <div class="play">You: <span id="player-play">—</span></div>
-        <div class="play">Computer: <span id="computer-play">—</span></div>
-      </div>
-    </section>
-
     <button id="reset-btn" class="secondary">🔄 Reset Scores</button>
   </main>
 
-  <!-- Game Script -->
   <script src="script.js"></script>
 </body>
 </html>
